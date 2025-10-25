@@ -1,48 +1,122 @@
+CarShop / ProShop v2 (MERN) Төслийн Танилцуулга
+
+Энэхүү төсөл нь MERN (MongoDB, Express, React, Node.js) стак дээр суурилсан, цахим худалдааны вэбсайтын бүрэн ажиллагаатай загвар юм.
+
 ҮНДСЭН ФУНКЦҮҮД (FEATURES)
+
 Дэлгүүрийн сагсны бүрэн ажиллагаа
+
 Бүтээгдэхүүний үнэлгээ, сэтгэгдэл
+
 Шилдэг бүтээгдэхүүний карусель (слайдер)
+
 Бүтээгдэхүүний хуудаслалт (Pagination)
+
 Бүтээгдэхүүн хайх функц
+
 Хэрэглэгчийн захиалгын түүхтэй профайл
+
 Админ: Бүтээгдэхүүн удирдах
+
 Админ: Хэрэглэгч удирдах
+
 Админ: Захиалгын дэлгэрэнгүй хуудас
+
 Захиалгыг "Хүргэгдсэн" гэж тэмдэглэх
+
 Төлбөрийн үйл явц (хүргэлт, төлбөрийн хэлбэр гэх мэт)
-PayPal / кредит картны интеграцчилалӨгөгдлийн санг бэлэн мэдээллээр дүүргэгч (бүтээгдэхүүн ба хэрэглэгчид)
+
+PayPal / кредит картны интеграцчилал
+
+Өгөгдлийн санг бэлэн мэдээллээр дүүргэгч (бүтээгдэхүүн ба хэрэглэгчид)
+
 АШИГЛАЛТ (USAGE)
 
-MongoDB өгөгдлийн сан үүсгэж, MongoDB URI-г авах - MongoDB AtlasPayPal бүртгэл үүсгэж,Client ID-г авах - PayPal DeveloperEnv (Орчны) Хувьсагчид.env.example файлыг .env болгон нэрийг нь өөрчилж, дотор нь дараах утгуудыг оруулна уу:NODE_ENV = development
+Эхлэхийн тулд танд дараах зүйлс шаардлагатай:
 
+MongoDB өгөгдлийн сан үүсгэж, MongoDB URI-г авах - MongoDB Atlas
+
+PayPal бүртгэл үүсгэж, Client ID-г авах - PayPal Developer
+
+Env (Орчны) Хувьсагчид
+
+Төслийн үндсэн хавтаст .env.example файлыг .env болгон нэрийг нь өөрчилж, дотор нь дараах утгуудыг өөрийн мэдээллээр солино уу:
+
+NODE_ENV = development
 PORT = 5000
-MONGO_URI = your mongodb uri
+MONGO_URI = your_mongodb_uri
 JWT_SECRET = 'abc123'
-PAYPAL_CLIENT_ID = your paypal client id
+PAYPAL_CLIENT_ID = your_paypal_client_id
 PAGINATION_LIMIT = 8
-JWT_SECRET болон PAGINATION_LIMIT-г хүссэнээрээ өөрчилнө үү.Шаардлагатай Багцууды Суулгах (frontend & backend)npm install
+
+
+Тэмдэглэл: JWT_SECRET-г өөрийн хүссэн нууц үгээр солино уу.
+
+ТӨСЛИЙГ СУУЛГАХ БА АЖИЛЛУУЛАХ
+
+1. Шаардлагатай Багцууды Суулгах
+
+Терминал дээр дараах тушаалыг ажиллуулна уу:
+
+# Backend-ийн багцуудыг суулгах
+npm install
+
+# Frontend-ийн багцуудыг суулгах
 cd frontend
 npm install
-АЖИЛЛУУЛАХ (RUN)# Frontend (:3000) ба Backend (:5000) серверийг хамт ажиллуулах
+
+
+2. Өгөгдлийн Санг Дүүргэх (Seed Database)
+
+Та дараах тушаалууды ашиглан өгөгдлийн санг жишиг мэдээллээр дүүргэх боломжтой.
+
+# Мэдээлэл оруулах (Import)
+npm run data:import
+
+# Бүх мэдээллийг устгах (Destroy)
+npm run data:destroy
+
+
+3. Төслийг Ажиллуулах (Run)
+
+# Frontend (:3000) ба Backend (:5000) серверийг хамт ажиллуулах
 npm run dev
 
 # Зөвхөн Backend серверийг ажиллуулах
 npm run server
-BUILD & DEPLOY (БҮТЭЭХ БА НИЙТЛЭХ)# Frontend-ийн production build үүсгэх
+
+
+Хэрэглэгч тал http://localhost:3000 хаягаар, сервер тал http://localhost:5000 хаягаар ажиллана.
+
+BUILD & DEPLOY (БҮТЭЭХ БА НИЙТЛЭХ)
+
+Frontend-ийн production build (нийтлэх хувилбар) үүсгэх:
+
+# Frontend хавтас руу орох
 cd frontend
+
+# Build хийх
 npm run build
-ӨГӨГДЛИЙН САНГ ДҮҮРГЭХ (SEED DATABASE)Та дараах тушаалууды ашиглан өгөгдлийн санг жишиг хэрэглэгчид болон бүтээгдэхүүнээр дүүргэх, эсвэл бүх өгөгдлийг устгах боломжтой.# Мэдээлэл оруулах (Import)
-npm run data:import
 
-# Мэдээлэл устгах (Destroy)
-npm run data:destroy
-Жишиг хэрэглэгчийн нэвтрэх мэдээлэл
 
-admin@email.com (Админ)
-123456
+ЖИШИГ ХЭРЭГЛЭГЧИД
 
-john@email.com (Хэрэглэгч)
-123456
+Та дараах жишиг мэдээллийг ашиглан нэвтэрч болно:
 
-jane@email.com (Хэрэглэгч)
-123456
+Админ (Admin)
+
+Email: admin@email.com
+
+Password: 123456
+
+Хэрэглэгч 1 (Customer)
+
+Email: john@email.com
+
+Password: 123456
+
+Хэрэглэгч 2 (Customer)
+
+Email: jane@email.com
+
+Password: 123456
